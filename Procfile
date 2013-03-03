@@ -1,1 +1,1 @@
-web: /var/lib/gems/1.8/bin/unicorn config.ru -E production -p 10001
+web: /home/aska/.rbenv/shims/unicorn config.ru -E production -p 10001
