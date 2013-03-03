@@ -9,11 +9,9 @@ else
 	# sudo yum install memcached
 	# sudo /etc/init.d/memcached start
 	# gem install dalli
+	require 'dalli'
 	require 'rack/session/dalli'
-	use Rack::Session::Dalli,
-		:memcache_server => 'localhost:11211',
-		:expire_after => 3600,
-		:namespace => 'bootstrap.7kai.org'
+	use Rack::Session::Dalli, :cache => Dalli::Client.new
 end
 
 get '/' do
