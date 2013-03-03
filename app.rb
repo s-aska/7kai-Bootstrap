@@ -17,5 +17,6 @@ else
 end
 
 get '/' do
-  'Hello world!'
+	session[:count] = ( session[:count] || 0 ) + 1
+	'Hello world! ' + session[:count].to_s
 end
