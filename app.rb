@@ -5,6 +5,8 @@ require 'oauth'
 
 set :erb, :escape_html => true
 
+callback_url = 'http://127.0.0.1:4567/callback'
+
 # 設定
 if development?
 	use Rack::Session::Cookie,
@@ -16,9 +18,9 @@ else
 	require 'dalli'
 	require 'rack/session/dalli'
 	use Rack::Session::Dalli, :cache => Dalli::Client.new
+	callback_url = 'http://bootstrap.7kai.org/callback'
 end
 
-callback_url = 'http://127.0.0.1:4567/callback'
 consumer = OAuth::Consumer.new(
 	ENV["TW_CONSUMER_KEY"],
 	ENV["TW_CONSUMER_SECRET"],
